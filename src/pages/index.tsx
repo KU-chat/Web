@@ -5,11 +5,12 @@ import {
   RouterProvider,
 } from 'react-router-dom'
 import Signup from './Signup/Signup'
+import Home from './home'
 
 const Router = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path='/'>
+      <Route path='/' element={<Home />}>
         <Route path='signup' element={<Signup />} />
         <Route path='login' />
       </Route>,
