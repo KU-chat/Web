@@ -1,8 +1,8 @@
-import Title from '../../components/Signup/Title'
+import SignUpTitle from '../../components/Signup/SignupTitle'
 const Signup = () => {
   return (
     <div>
-      <Title title={'언어를 선택해주세요'} />
+      <SignUpTitle title={'언어를 선택해주세요'} />
       Signup
     </div>
   )
