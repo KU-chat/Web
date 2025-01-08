@@ -19,12 +19,19 @@ const Language = ({ data, updateData, nextStep }: LanguageProps) => {
         title='어플 설정언어'
         toggleOption={['한국어', '영어', '중국어', '일본어']}
         onChange={(value: string) => updateData('appLanguage', value)}
-      ></SignupInputBox>{' '}
+      ></SignupInputBox>
       <SignupInputBox
-        type='text'
-        title='어플 설정언어'
+        type='toggle'
+        title='희망 학습언어'
         toggleOption={['한국어', '영어', '중국어', '일본어']}
-        onChange={(value: string) => updateData('appLanguage', value)}
+        onChange={(value: string) => updateData('firstStudyLanguage', value)}
+        placeholder='1순위'
+      ></SignupInputBox>
+      <SignupInputBox
+        type='toggle'
+        toggleOption={['한국어', '영어', '중국어', '일본어']}
+        onChange={(value: string) => updateData('secondStudyLanguage', value)}
+        placeholder='2순위'
       ></SignupInputBox>
       <button onClick={nextStep}>Next</button>
     </div>
