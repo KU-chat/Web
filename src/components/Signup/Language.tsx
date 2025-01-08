@@ -9,12 +9,13 @@ type LanguageProps = {
     value: string,
   ) => void
   nextStep: () => void
+  prevStep: () => void
 }
 
-const Language = ({ data, updateData, nextStep }: LanguageProps) => {
+const Language = ({ data, updateData, nextStep, prevStep }: LanguageProps) => {
   return (
     <div>
-      <SignupTitle title='언어를 선택해주세요'></SignupTitle>
+      <SignupTitle title='언어를 선택해주세요' prevStep={prevStep}></SignupTitle>
       <SignupInputBox
         type='toggle'
         title='어플 설정언어'

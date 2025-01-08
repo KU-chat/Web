@@ -5,9 +5,10 @@ import LeftArrowImg from '../../assets/images/left_arrow.svg'
 interface SignupTitleProps {
   title: string
   hasBackButton?: boolean
+  prevStep: () => void
 }
 
-const SignupTitle = ({ title, hasBackButton = true }: SignupTitleProps) => {
+const SignupTitle = ({ title, hasBackButton = true, prevStep }: SignupTitleProps) => {
   return (
     <>
       {hasBackButton && (
@@ -17,7 +18,9 @@ const SignupTitle = ({ title, hasBackButton = true }: SignupTitleProps) => {
             margin: 7vw;
             width: 16px;
             height: 16px;
+            cursor: pointer;
           `}
+          onClick={prevStep}
         ></img>
       )}
       <div

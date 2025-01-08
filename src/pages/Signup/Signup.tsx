@@ -21,7 +21,7 @@ const Signup = () => {
     appLanguage: '한국어',
     firstStudyLanguage: '영어',
     secondStudyLanguage: '일본어',
-    country: '',
+    country: '대한민국',
     name: '',
     major: '',
     studentIdNumber: 0,
@@ -40,10 +40,20 @@ const Signup = () => {
   return (
     <Col>
       {step === 1 && (
-        <Language data={signupData} updateData={updateSignupData} nextStep={nextStep} />
+        <Language
+          data={signupData}
+          updateData={updateSignupData}
+          nextStep={nextStep}
+          prevStep={prevStep}
+        />
       )}
       {step === 2 && (
-        <Country data={signupData} updateData={updateSignupData} nextStep={nextStep} />
+        <Country
+          data={signupData}
+          updateData={updateSignupData}
+          nextStep={nextStep}
+          prevStep={prevStep}
+        />
       )}
     </Col>
   )
