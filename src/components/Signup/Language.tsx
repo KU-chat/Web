@@ -37,7 +37,7 @@ const Language = ({ data, updateData, nextStep }: LanguageProps) => {
         placeholder='2순위'
         data={data.secondStudyLanguage}
       ></SignupInputBox>
-      <SignupConfirmButton text='확인' onclick={nextStep}></SignupConfirmButton>
+      <SignupConfirmButton text='확인' onClick={nextStep}></SignupConfirmButton>
     </div>
   )
 }
