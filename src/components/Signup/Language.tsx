@@ -1,3 +1,4 @@
+import SignupConfirmButton from './SignupConfirmButton'
 import SignupInputBox from './SignupInputBox'
 import SignupTitle from './SignupTitle'
 
@@ -19,6 +20,7 @@ const Language = ({ data, updateData, nextStep }: LanguageProps) => {
         title='어플 설정언어'
         toggleOption={['한국어', '영어', '중국어', '일본어']}
         onChange={(value: string) => updateData('appLanguage', value)}
+        data={data.appLanguage}
       ></SignupInputBox>
       <SignupInputBox
         type='toggle'
@@ -26,14 +28,16 @@ const Language = ({ data, updateData, nextStep }: LanguageProps) => {
         toggleOption={['한국어', '영어', '중국어', '일본어']}
         onChange={(value: string) => updateData('firstStudyLanguage', value)}
         placeholder='1순위'
+        data={data.firstStudyLanguage}
       ></SignupInputBox>
       <SignupInputBox
         type='toggle'
         toggleOption={['한국어', '영어', '중국어', '일본어']}
         onChange={(value: string) => updateData('secondStudyLanguage', value)}
         placeholder='2순위'
+        data={data.secondStudyLanguage}
       ></SignupInputBox>
-      <button onClick={nextStep}>Next</button>
+      <SignupConfirmButton text='확인' onclick={nextStep}></SignupConfirmButton>
     </div>
   )
 }

@@ -6,6 +6,7 @@ interface SignupInputBoxProps {
   placeholder?: string
   toggleOption?: string[]
   title?: string
+  data?: string
   onChange: (value: string) => void
 }
 
@@ -20,7 +21,7 @@ const boxStyle = css`
 `
 
 const SignupInputBox = (props: SignupInputBoxProps) => {
-  const { type, placeholder, toggleOption, onChange, title } = props
+  const { type, placeholder, toggleOption, onChange, title, data } = props
   return (
     <>
       {title && (
@@ -38,11 +39,12 @@ const SignupInputBox = (props: SignupInputBoxProps) => {
           type='text'
           placeholder={placeholder}
           css={boxStyle}
+          value={data}
           onChange={(e) => onChange(e.target.value)}
         ></input>
       )}
       {type === 'toggle' && toggleOption && (
-        <select css={boxStyle} onChange={(e) => onChange(e.target.value)}>
+        <select css={boxStyle} onChange={(e) => onChange(e.target.value)} value={data}>
           {toggleOption.map((option, index) => (
             <option key={index} value={option}>
               {option}

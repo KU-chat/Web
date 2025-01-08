@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Language from '../../components/Signup/Language'
 import { Col } from '../../components/commons/Flex'
 
@@ -17,9 +17,9 @@ type SignupData = {
 const Signup = () => {
   const [step, setStep] = useState(1)
   const [signupData, setSignupData] = useState<SignupData>({
-    appLanguage: '',
-    firstStudyLanguage: '',
-    secondStudyLanguage: '',
+    appLanguage: '한국어',
+    firstStudyLanguage: '영어',
+    secondStudyLanguage: '일본어',
     country: '',
     name: '',
     major: '',
@@ -27,6 +27,7 @@ const Signup = () => {
     gender: '',
     birth: 0,
   })
+
   const nextStep = () => setStep((prev) => prev + 1)
   const prevStep = () => setStep((prev) => prev - 1)
 

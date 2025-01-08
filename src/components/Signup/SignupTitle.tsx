@@ -14,7 +14,7 @@ const SignupTitle = ({ title, hasBackButton = true }: SignupTitleProps) => {
         <img
           src={LeftArrowImg}
           css={css`
-            margin: 24px;
+            margin: 7vw;
             width: 16px;
             height: 16px;
           `}
@@ -24,7 +24,7 @@ const SignupTitle = ({ title, hasBackButton = true }: SignupTitleProps) => {
         css={css`
           font-size: 24px;
           font-weight: 700;
-          margin: 24px;
+          margin: 7vw;
         `}
       >
         {title}
