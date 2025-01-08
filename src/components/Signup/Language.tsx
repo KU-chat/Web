@@ -1,3 +1,4 @@
+import SignupInputBox from './SignupInputBox'
 import SignupTitle from './SignupTitle'
 
 type LanguageProps = {
@@ -13,25 +14,18 @@ const Language = ({ data, updateData, nextStep }: LanguageProps) => {
   return (
     <div>
       <SignupTitle title='언어를 선택해주세요'></SignupTitle>
-      <h2>Step 1: Email and Password</h2>
-      <input
+      <SignupInputBox
+        type='toggle'
+        title='어플 설정언어'
+        toggleOption={['한국어', '영어', '중국어', '일본어']}
+        onChange={(value: string) => updateData('appLanguage', value)}
+      ></SignupInputBox>{' '}
+      <SignupInputBox
         type='text'
-        value={data.appLanguage}
-        onChange={(e) => updateData('appLanguage', e.target.value)}
-        placeholder='Email'
-      />
-      <input
-        type='text'
-        value={data.firstStudyLanguage}
-        onChange={(e) => updateData('firstStudyLanguage', e.target.value)}
-        placeholder='Password'
-      />{' '}
-      <input
-        type='text'
-        value={data.secondStudyLanguage}
-        onChange={(e) => updateData('secondStudyLanguage', e.target.value)}
-        placeholder='Password'
-      />
+        title='어플 설정언어'
+        toggleOption={['한국어', '영어', '중국어', '일본어']}
+        onChange={(value: string) => updateData('appLanguage', value)}
+      ></SignupInputBox>
       <button onClick={nextStep}>Next</button>
     </div>
   )

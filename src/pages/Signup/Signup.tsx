@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Language from '../../components/Signup/Language'
+import { Col } from '../../components/commons/Flex'
 
 type SignupData = {
   appLanguage: string
@@ -33,12 +34,13 @@ const Signup = () => {
     setSignupData({ ...signupData, [field]: value })
   }
 
+  console.log(signupData)
   return (
-    <div>
+    <Col>
       {step === 1 && (
         <Language data={signupData} updateData={updateSignupData} nextStep={nextStep} />
       )}
-    </div>
+    </Col>
   )
 }
 
