@@ -2,6 +2,8 @@ import { useState } from 'react'
 import Language from '../../components/Signup/Language'
 import { Col } from '../../components/commons/Flex'
 import Country from '../../components/Signup/Country'
+import Name from '../../components/Signup/Name'
+import IDCheck from '../../components/Signup/IDCheck'
 
 type SignupData = {
   appLanguage: string
@@ -55,6 +57,15 @@ const Signup = () => {
           prevStep={prevStep}
         />
       )}
+      {step === 3 && (
+        <Name
+          data={signupData}
+          updateData={updateSignupData}
+          nextStep={nextStep}
+          prevStep={prevStep}
+        />
+      )}
+      {step === 4 && <IDCheck nextStep={nextStep} prevStep={prevStep} />}
     </Col>
   )
 }
