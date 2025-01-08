@@ -5,7 +5,7 @@ import {
   RouterProvider,
 } from 'react-router-dom'
 import Signup from './Signup/Signup'
-import Home from './home'
+import Home from './Home'
 import Friend from './Friend/Friend'
 import Login from './Login/Login'
 import Chat from './Chat/Chat'
