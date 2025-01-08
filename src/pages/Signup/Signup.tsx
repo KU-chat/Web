@@ -4,6 +4,7 @@ import { Col } from '../../components/commons/Flex'
 import Country from '../../components/Signup/Country'
 import Name from '../../components/Signup/Name'
 import IDCheck from '../../components/Signup/IDCheck'
+import MajorAndStudentId from '../../components/Signup/MajorAndStudentId'
 
 type SignupData = {
   appLanguage: string
@@ -12,9 +13,9 @@ type SignupData = {
   country: string
   name: string
   major: string
-  studentIdNumber: number
+  studentIdNumber: string
   gender: string
-  birth: number
+  birth: string
 }
 
 const Signup = () => {
@@ -26,15 +27,15 @@ const Signup = () => {
     country: '대한민국',
     name: '',
     major: '',
-    studentIdNumber: 0,
+    studentIdNumber: '',
     gender: '',
-    birth: 0,
+    birth: '',
   })
 
   const nextStep = () => setStep((prev) => prev + 1)
   const prevStep = () => setStep((prev) => prev - 1)
 
-  const updateSignupData = (field: keyof SignupData, value: string) => {
+  const updateSignupData = (field: keyof SignupData, value: string | number) => {
     setSignupData({ ...signupData, [field]: value })
   }
 
@@ -66,6 +67,14 @@ const Signup = () => {
         />
       )}
       {step === 4 && <IDCheck nextStep={nextStep} prevStep={prevStep} />}
+      {step === 5 && (
+        <MajorAndStudentId
+          data={signupData}
+          updateData={updateSignupData}
+          nextStep={nextStep}
+          prevStep={prevStep}
+        />
+      )}
     </Col>
   )
 }
