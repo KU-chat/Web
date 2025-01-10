@@ -6,6 +6,7 @@ import Name from '../../components/Signup/Name'
 import IDCheck from '../../components/Signup/IDCheck'
 import MajorAndStudentId from '../../components/Signup/MajorAndStudentId'
 import Gender from '../../components/Signup/Gender'
+import Birth from '../../components/Signup/Birth'
 
 type SignupData = {
   appLanguage: string
@@ -78,6 +79,14 @@ const Signup = () => {
       )}{' '}
       {step === 6 && (
         <Gender
+          data={signupData}
+          updateData={updateSignupData}
+          nextStep={nextStep}
+          prevStep={prevStep}
+        />
+      )}
+      {step === 7 && (
+        <Birth
           data={signupData}
           updateData={updateSignupData}
           nextStep={nextStep}
