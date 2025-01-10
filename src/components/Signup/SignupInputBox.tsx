@@ -27,7 +27,7 @@ const SignupInputBox = (props: SignupInputBoxProps) => {
       {title && (
         <div
           css={css`
-            font-size: 12px;
+            font-size: 16px;
             margin: 3em 0 0 8vw;
           `}
         >
