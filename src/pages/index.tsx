@@ -1,11 +1,11 @@
 import {
   createBrowserRouter,
   createRoutesFromElements,
+  Outlet,
   Route,
   RouterProvider,
 } from 'react-router-dom'
 import Signup from './Signup/Signup'
-import Home from './Home'
 import Friend from './Friend/Friend'
 import Login from './Login/Login'
 import Chat from './Chat/Chat'
@@ -15,7 +15,7 @@ const Router = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
-        <Route index element={<Home />} />
+        <Route index element={<Outlet />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
         <Route path='/chat' element={<Chat />} />
