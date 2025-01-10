@@ -14,7 +14,7 @@ const SignupConfirmButton = (props: SignupConfirmButtonProps) => {
       onClick={onClick}
       css={css`
         padding: 0.8em;
-        border-radius: 4px;
+        border-radius: 6px;
         border: 1px solid #ccc;
         margin: 2vw 7vw 0 7vw;
         width: 86vw;

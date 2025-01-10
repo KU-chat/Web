@@ -5,6 +5,7 @@ import Country from '../../components/Signup/Country'
 import Name from '../../components/Signup/Name'
 import IDCheck from '../../components/Signup/IDCheck'
 import MajorAndStudentId from '../../components/Signup/MajorAndStudentId'
+import Gender from '../../components/Signup/Gender'
 
 type SignupData = {
   appLanguage: string
@@ -69,6 +70,14 @@ const Signup = () => {
       {step === 4 && <IDCheck nextStep={nextStep} prevStep={prevStep} />}
       {step === 5 && (
         <MajorAndStudentId
+          data={signupData}
+          updateData={updateSignupData}
+          nextStep={nextStep}
+          prevStep={prevStep}
+        />
+      )}{' '}
+      {step === 6 && (
+        <Gender
           data={signupData}
           updateData={updateSignupData}
           nextStep={nextStep}
