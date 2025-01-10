@@ -17,6 +17,7 @@ const Splash = () => {
         font-weight: 600;
         font-size: 36px;
         color: #fff;
+        font-family: 'Baloo Da 2', cursive;
       `}
     >
       <img
