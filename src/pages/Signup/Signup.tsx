@@ -7,6 +7,7 @@ import IDCheck from '../../components/Signup/IDCheck'
 import MajorAndStudentId from '../../components/Signup/MajorAndStudentId'
 import Gender from '../../components/Signup/Gender'
 import Birth from '../../components/Signup/Birth'
+import Complete from '../../components/Signup/Complete'
 
 type SignupData = {
   appLanguage: string
@@ -93,6 +94,7 @@ const Signup = () => {
           prevStep={prevStep}
         />
       )}
+      {step === 8 && <Complete />}
     </Col>
   )
 }
