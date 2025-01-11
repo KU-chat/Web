@@ -4,8 +4,18 @@ import lottieCheck from '../../assets/lotties/lottieCheck.json'
 import SignupConfirmButton from './SignupConfirmButton'
 import { css } from '@emotion/react'
 import { useNavigate } from 'react-router-dom'
+import { signup } from '../../apis/signup/signup'
 
-const Complete = () => {
+const Complete = ({ signupData }: { signupData: any }) => {
+  const handleSignupSubmit = async () => {
+    try {
+      const response = await signup(signupData)
+      console.log('회원가입 성공:', response)
+      navigate('/')
+    } catch (error: any) {
+      alert(error.message)
+    }
+  }
   const navigate = useNavigate()
   return (
     <div
@@ -30,7 +40,7 @@ const Complete = () => {
       >
         회원가입을 완료했어요!
       </span>
-      <SignupConfirmButton text='KU chat 시작하기' onClick={() => navigate('/')} />
+      <SignupConfirmButton text='KU chat 시작하기' onClick={handleSignupSubmit} />
     </div>
   )
 }

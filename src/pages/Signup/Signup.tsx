@@ -94,7 +94,7 @@ const Signup = () => {
           prevStep={prevStep}
         />
       )}
-      {step === 8 && <Complete />}
+      {step === 8 && <Complete signupData={signupData} />}
     </Col>
   )
 }
