@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Language from '../../components/Signup/Language'
 import { Col } from '../../components/commons/Flex'
 import Country from '../../components/Signup/Country'
@@ -8,6 +8,7 @@ import MajorAndStudentId from '../../components/Signup/MajorAndStudentId'
 import Gender from '../../components/Signup/Gender'
 import Birth from '../../components/Signup/Birth'
 import Complete from '../../components/Signup/Complete'
+import { useSearchParams } from 'react-router-dom'
 
 type SignupData = {
   appLanguage: string
@@ -23,6 +24,8 @@ type SignupData = {
 
 const Signup = () => {
   const [step, setStep] = useState(1)
+  const [searchParams] = useSearchParams()
+  const guestToken = searchParams.get('guestToken')
   const [signupData, setSignupData] = useState<SignupData>({
     appLanguage: '한국어',
     firstStudyLanguage: '영어',
@@ -34,6 +37,11 @@ const Signup = () => {
     gender: '',
     birth: '',
   })
+  useEffect(() => {
+    if (guestToken) {
+      localStorage.setItem('questToken', guestToken)
+    }
+  }, [guestToken])
 
   const nextStep = () => setStep((prev) => prev + 1)
   const prevStep = () => setStep((prev) => prev - 1)
