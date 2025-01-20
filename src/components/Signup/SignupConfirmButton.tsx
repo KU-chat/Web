@@ -4,10 +4,11 @@ import { css } from '@emotion/react'
 interface SignupConfirmButtonProps {
   text: string
   onClick: () => void
+  disabled?: boolean
 }
 
 const SignupConfirmButton = (props: SignupConfirmButtonProps) => {
-  const { text, onClick } = props
+  const { text, onClick, disabled } = props
 
   return (
     <button
@@ -20,14 +21,16 @@ const SignupConfirmButton = (props: SignupConfirmButtonProps) => {
         width: 86vw;
         box-sizing: border-box;
         font-size: 16px;
-        background-color: #046b40;
+        background-color: ${disabled ? '#ccc' : '#046b40'};
         color: #fff;
-        cursor: pointer;
+        cursor: ${disabled ? 'not-allowed' : 'pointer'};
         display: flex;
         position: fixed;
         bottom: 4vh;
         justify-content: center;
+        opacity: ${disabled ? 0.6 : 1};
       `}
+      disabled={disabled}
     >
       {text}
     </button>
