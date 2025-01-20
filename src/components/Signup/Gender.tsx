@@ -44,14 +44,14 @@ const Gender = ({ data, updateData, nextStep, prevStep }: GenderProps) => {
       <SignupTitle title='성별을 알려주세요' prevStep={prevStep} />
       <div css={buttonContainerStyle}>
         <button
-          css={buttonStyle(data.gender === '남자')}
-          onClick={() => handleGenderSelect('남자')}
+          css={buttonStyle(data.gender === '남성')}
+          onClick={() => handleGenderSelect('남성')}
         >
           남자
         </button>
         <button
-          css={buttonStyle(data.gender === '여자')}
-          onClick={() => handleGenderSelect('여자')}
+          css={buttonStyle(data.gender === '여성')}
+          onClick={() => handleGenderSelect('여성')}
         >
           여자
         </button>
