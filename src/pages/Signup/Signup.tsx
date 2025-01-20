@@ -39,7 +39,7 @@ const Signup = () => {
   })
   useEffect(() => {
     if (guestToken) {
-      localStorage.setItem('questToken', guestToken)
+      localStorage.setItem('guestToken', guestToken)
     }
   }, [guestToken])
 
