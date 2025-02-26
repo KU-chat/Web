@@ -5,21 +5,20 @@ import SignupConfirmButton from './SignupConfirmButton'
 import { css } from '@emotion/react'
 import { useNavigate } from 'react-router-dom'
 import { signup } from '../../apis/signup/signup'
+import { useAuthStore } from '../../store/authStore'
 
 const Complete = ({ signupData }: { signupData: any }) => {
-  let accessToken = ''
-  let refreshToken = ''
+  const navigate = useNavigate()
+  const setTokens = useAuthStore((state) => state.setTokens)
   const handleSignupSubmit = async () => {
     try {
       const response = await signup(signupData)
-      accessToken = response.accessToken
-      refreshToken = response.refreshToken
+      setTokens(response.accessToken, response.refreshToken)
       navigate('/')
     } catch (error: any) {
       alert(error.message)
     }
   }
-  const navigate = useNavigate()
   return (
     <div
       css={css`
