@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import LeftArrowImg from '../../assets/images/left_arrow.svg'
 

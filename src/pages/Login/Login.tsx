@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { useEffect, useState } from 'react'
 import Splash from './Splash'
 import KUchat_Logo from '../../assets/images/KUchat_logo.svg'

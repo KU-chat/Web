@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import Lottie from 'lottie-react'
 import lottieCheck from '../../assets/lotties/lottieCheck.json'
 import SignupConfirmButton from './SignupConfirmButton'

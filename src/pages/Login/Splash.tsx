@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import KUchat_Logo from '../../assets/images/KUchat_logo.svg'
 
