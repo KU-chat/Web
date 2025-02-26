@@ -9,8 +9,11 @@ export const refreshAccessToken = async (): Promise<string | null> => {
   }
 
   try {
-    const response = await axios.post('https://www.kuchat.site/auth/refresh-token', {
-      refreshToken,
+    const response = await axios.post('https://www.kuchat.site/auth/refresh-token', '', {
+      headers: {
+        Authorization: `Bearer ${refreshToken}`,
+        'Content-Type': 'application/json',
+      },
     })
     const { accessToken, refreshToken: newRefreshToken } = response.data
 
