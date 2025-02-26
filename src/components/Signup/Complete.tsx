@@ -7,10 +7,13 @@ import { useNavigate } from 'react-router-dom'
 import { signup } from '../../apis/signup/signup'
 
 const Complete = ({ signupData }: { signupData: any }) => {
+  let accessToken = ''
+  let refreshToken = ''
   const handleSignupSubmit = async () => {
     try {
       const response = await signup(signupData)
-      console.log('회원가입 성공:', response)
+      accessToken = response.accessToken
+      refreshToken = response.refreshToken
       navigate('/')
     } catch (error: any) {
       alert(error.message)
