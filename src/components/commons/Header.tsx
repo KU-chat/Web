@@ -13,16 +13,17 @@ const Header = ({ title, isRightButton = false, rightButton, buttonClick }: Head
       css={css`
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         width: 100%;
         padding: 10px 16px;
+        box-sizing: border-box;
+        margin-top: 12px;
       `}
     >
       <h3
         css={css`
           font-size: 20px;
-          font-weight: bold;
-          margin: 0;
+          font-weight: 500;
         `}
       >
         {title}
@@ -37,14 +38,16 @@ const Header = ({ title, isRightButton = false, rightButton, buttonClick }: Head
             padding: 0;
             display: flex;
             align-items: center;
+            position: absolute;
+            right: 5%;
           `}
         >
           <img
             src={rightButton}
-            alt='settings'
+            alt='setting Img'
             css={css`
-              width: 24px;
-              height: 24px;
+              width: 32px;
+              height: 32px;
             `}
           />
         </button>
