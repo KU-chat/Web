@@ -5,7 +5,6 @@ import GoogleImg from '../../assets/images/Login_Google_img.svg'
 import { css } from '@emotion/react'
 import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../../store/authStore'
-import axios from 'axios'
 
 const Login = () => {
   const [showSplash, setShowSplash] = useState(true)
@@ -17,18 +16,27 @@ const Login = () => {
     return () => clearTimeout(timer)
   }, [])
 
-  const handleGoogleLogin = async () => {
-    try {
-      const response = await axios.get('https://www.kuchat.site/oauth2/authorization/google')
-      if (response.data.responseStatus.code === 1000) {
-        const { accessToken, refreshToken } = response.data
+  const handleGoogleLogin = () => {
+    window.location.href = 'https://www.kuchat.site/oauth2/authorization/google'
+  }
+
+  useEffect(() => {
+    const extractTokensFromUrl = () => {
+      const urlHash = window.location.hash
+      if (!urlHash) return
+
+      const params = new URLSearchParams(urlHash.substring(1))
+      const accessToken = params.get('accessToken')
+      const refreshToken = params.get('refreshToken')
+
+      if (accessToken && refreshToken) {
         setTokens(accessToken, refreshToken)
         navigate('/')
       }
-    } catch (error) {
-      console.error('구글 로그인 처리 중 오류 발생:', error)
     }
-  }
+
+    extractTokensFromUrl()
+  }, [navigate, setTokens])
 
   return showSplash ? (
     <Splash />
@@ -66,6 +74,7 @@ const Login = () => {
           justify-content: center;
           align-items: center;
           margin-top: 4vh;
+          cursor: pointer;
         `}
         onClick={handleGoogleLogin}
       >

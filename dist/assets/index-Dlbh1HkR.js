@@ -183,7 +183,7 @@ o.goToAndStop(ot-o.firstFrame-1,!0)}ut.type==="loop"&&(nt===null||nt!==ut.frames
       `,children:[jsx$1("img",{css:css`
           width: 160px;
           height: 160px;
-        `,src:KUchat_Logo}),jsx$1("div",{children:"KU chat"})]}),GoogleImg="/assets/Login_Google_img-DuJRQkxf.svg",Login=()=>{const[i,s]=reactExports.useState(!0),a=useNavigate(),o=useAuthStore($=>$.setTokens);reactExports.useEffect(()=>{const $=setTimeout(()=>s(!1),3e3);return()=>clearTimeout($)},[]);const _=async()=>{try{const $=await axios.get("https://www.kuchat.site/oauth2/authorization/google");if($.data.responseStatus.code===1e3){const{accessToken:j,refreshToken:_e}=$.data;o(j,_e),a("/")}}catch($){console.error("구글 로그인 처리 중 오류 발생:",$)}};return i?jsx$1(Splash,{}):jsxs("div",{css:css`
+        `,src:KUchat_Logo}),jsx$1("div",{children:"KU chat"})]}),GoogleImg="/assets/Login_Google_img-DuJRQkxf.svg",Login=()=>{const[i,s]=reactExports.useState(!0),a=useNavigate(),o=useAuthStore($=>$.setTokens);reactExports.useEffect(()=>{const $=setTimeout(()=>s(!1),3e3);return()=>clearTimeout($)},[]);const _=()=>{window.location.href="https://www.kuchat.site/oauth2/authorization/google"};return reactExports.useEffect(()=>{(()=>{const j=window.location.hash;if(!j)return;const _e=new URLSearchParams(j.substring(1)),et=_e.get("accessToken"),tt=_e.get("refreshToken");et&&tt&&(o(et,tt),a("/"))})()},[a,o]),i?jsx$1(Splash,{}):jsxs("div",{css:css`
         display: flex;
         flex-direction: column;
         padding-top: 30vh;
@@ -206,6 +206,7 @@ o.goToAndStop(ot-o.firstFrame-1,!0)}ut.type==="loop"&&(nt===null||nt!==ut.frames
           justify-content: center;
           align-items: center;
           margin-top: 4vh;
+          cursor: pointer;
         `,onClick:_,children:[jsx$1("img",{src:GoogleImg,alt:"Google logo"}),jsx$1("div",{children:"Start with Google"})]})]})},Chat=()=>jsx$1("div",{children:"Chat"}),settingImg="/assets/User_Profile_Setting-tQX56rE-.svg",Header=({title:i,isRightButton:s=!1,rightButton:a,buttonClick:o})=>jsxs("div",{css:css`
         display: flex;
         align-items: center;
