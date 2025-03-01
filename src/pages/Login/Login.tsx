@@ -26,8 +26,8 @@ const Login = () => {
       if (!urlHash) return
 
       const params = new URLSearchParams(urlHash.substring(1))
-      const accessToken = params.get('access_Token')
-      const refreshToken = params.get('refresh_Token')
+      const accessToken = params.get('access_token')
+      const refreshToken = params.get('refresh_token')
 
       if (accessToken && refreshToken) {
         setTokens(accessToken, refreshToken)
