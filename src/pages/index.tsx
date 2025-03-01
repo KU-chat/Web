@@ -1,6 +1,7 @@
 import {
   createBrowserRouter,
   createRoutesFromElements,
+  Outlet,
   Route,
   RouterProvider,
 } from 'react-router-dom'
@@ -14,7 +15,7 @@ const Router = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
-        <Route index element={<Profile />} />
+        <Route index element={<Outlet />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
         <Route path='/chat' element={<Chat />} />

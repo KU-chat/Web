@@ -3,17 +3,31 @@ import Splash from './Splash'
 import KUchat_Logo from '../../assets/images/KUchat_logo.svg'
 import GoogleImg from '../../assets/images/Login_Google_img.svg'
 import { css } from '@emotion/react'
+import { useNavigate } from 'react-router-dom'
+import { useAuthStore } from '../../store/authStore'
+import axios from 'axios'
 
 const Login = () => {
   const [showSplash, setShowSplash] = useState(true)
+  const navigate = useNavigate()
+  const setTokens = useAuthStore((state) => state.setTokens)
 
   useEffect(() => {
     const timer = setTimeout(() => setShowSplash(false), 3000)
     return () => clearTimeout(timer)
   }, [])
 
-  const handleClick = () => {
-    window.location.href = 'https://www.kuchat.site/oauth2/authorization/google'
+  const handleGoogleLogin = async () => {
+    try {
+      const response = await axios.get('https://www.kuchat.site/oauth2/authorization/google')
+      if (response.data.responseStatus.code === 1000) {
+        const { accessToken, refreshToken } = response.data
+        setTokens(accessToken, refreshToken)
+        navigate('/')
+      }
+    } catch (error) {
+      console.error('구글 로그인 처리 중 오류 발생:', error)
+    }
   }
 
   return showSplash ? (
@@ -53,7 +67,7 @@ const Login = () => {
           align-items: center;
           margin-top: 4vh;
         `}
-        onClick={handleClick}
+        onClick={handleGoogleLogin}
       >
         <img src={GoogleImg} alt='Google logo' />
         <div>Start with Google</div>
