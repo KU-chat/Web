@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import axios from 'axios'
 import Splash from './Splash'
 import KUchat_Logo from '../../assets/images/KUchat_logo.svg'
 import GoogleImg from '../../assets/images/Login_Google_img.svg'
@@ -21,22 +22,24 @@ const Login = () => {
   }
 
   useEffect(() => {
-    const extractTokensFromUrl = () => {
-      const urlHash = window.location.hash
-      if (!urlHash) return
+    const fetchTokensFromCookies = async () => {
+      try {
+        const response = await axios.get('https://www.kuchat.site/auth/get-tokens', {
+          withCredentials: true,
+        })
 
-      const params = new URLSearchParams(urlHash.substring(1))
-      const accessToken = params.get('access_token')
-      const refreshToken = params.get('refresh_token')
-
-      if (accessToken && refreshToken) {
-        setTokens(accessToken, refreshToken)
-        window.history.replaceState(null, '', window.location.pathname)
-        navigate('/')
+        if (response.data?.access_token && response.data?.refresh_token) {
+          setTokens(response.data.access_token, response.data.refresh_token)
+          navigate('/')
+        } else {
+          console.error('토큰이 쿠키에서 발견되지 않았습니다.')
+        }
+      } catch (error) {
+        console.error('쿠키에서 토큰 가져오기 실패:', error)
       }
     }
 
-    extractTokensFromUrl()
+    fetchTokensFromCookies()
   }, [navigate, setTokens])
 
   return showSplash ? (
