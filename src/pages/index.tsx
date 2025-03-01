@@ -15,7 +15,7 @@ const Router = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
-        <Route index element={<Outlet />} />
+        <Route index element={<Profile />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
         <Route path='/chat' element={<Chat />} />
