@@ -4,7 +4,7 @@ import axios from 'axios'
 export const getAccessTokenFromCookie = (): string | null => {
   const cookies = document.cookie.split('; ') // 모든 쿠키를 배열로 분리
   console.log(cookies)
-  const tokenCookie = cookies.find((row) => row.startsWith('access_token=')) // access_token 찾기
+  const tokenCookie = cookies.find((row) => row.startsWith('accessToken=')) // access_token 찾기
 
   return tokenCookie ? tokenCookie.split('=')[1] : null // 값만 반환
 }
