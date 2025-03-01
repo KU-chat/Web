@@ -26,11 +26,12 @@ const Login = () => {
       if (!urlHash) return
 
       const params = new URLSearchParams(urlHash.substring(1))
-      const accessToken = params.get('accessToken')
-      const refreshToken = params.get('refreshToken')
+      const accessToken = params.get('access_Token')
+      const refreshToken = params.get('refresh_Token')
 
       if (accessToken && refreshToken) {
         setTokens(accessToken, refreshToken)
+        window.history.replaceState(null, '', window.location.pathname)
         navigate('/')
       }
     }
