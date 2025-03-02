@@ -10,6 +10,7 @@ import Friend from './Friend/Friend'
 import Login from './Login/Login'
 import Chat from './Chat/Chat'
 import Profile from './Profile/Profile'
+import LoginCallback from './Login/LoginCallback'
 
 const Router = () => {
   const router = createBrowserRouter(
@@ -18,6 +19,8 @@ const Router = () => {
         <Route index element={<Outlet />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/login/callback' element={<LoginCallback />} />
+
         <Route path='/chat' element={<Chat />} />
         <Route path='/friend' element={<Friend />} />
         <Route path='/profile' element={<Profile />} />

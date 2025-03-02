@@ -1,16 +1,12 @@
 import { useEffect, useState } from 'react'
-import axios from 'axios'
+
 import Splash from './Splash'
 import KUchat_Logo from '../../assets/images/KUchat_logo.svg'
 import GoogleImg from '../../assets/images/Login_Google_img.svg'
 import { css } from '@emotion/react'
-import { useNavigate } from 'react-router-dom'
-import { useAuthStore } from '../../store/authStore'
 
 const Login = () => {
   const [showSplash, setShowSplash] = useState(true)
-  const navigate = useNavigate()
-  const setTokens = useAuthStore((state) => state.setTokens)
 
   useEffect(() => {
     const timer = setTimeout(() => setShowSplash(false), 3000)
@@ -18,29 +14,13 @@ const Login = () => {
   }, [])
 
   const handleGoogleLogin = () => {
-    window.location.href = 'https://www.kuchat.site/oauth2/authorization/google'
+    const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID
+    const redirectUri = 'https://kuchat.netlify.app/login/callback'
+    const scope = encodeURIComponent('email profile openid')
+    const authUrl = `https://accounts.google.com/o/oauth2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}&access_type=offline`
+
+    window.location.href = authUrl
   }
-
-  useEffect(() => {
-    const fetchTokensFromCookies = async () => {
-      try {
-        const response = await axios.get('https://www.kuchat.site/auth/get-tokens', {
-          withCredentials: true,
-        })
-
-        if (response.data?.access_token && response.data?.refresh_token) {
-          setTokens(response.data.access_token, response.data.refresh_token)
-          navigate('/')
-        } else {
-          console.error('토큰이 쿠키에서 발견되지 않았습니다.')
-        }
-      } catch (error) {
-        console.error('쿠키에서 토큰 가져오기 실패:', error)
-      }
-    }
-
-    fetchTokensFromCookies()
-  }, [navigate, setTokens])
 
   return showSplash ? (
     <Splash />
