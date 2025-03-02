@@ -18,7 +18,7 @@ const LoginCallback = () => {
 
       try {
         const response = await axios.post(
-          'https://www.kuchat.site/auth/google',
+          'https://www.kuchat.site/oauth/google',
           { code },
           { withCredentials: true },
         )
