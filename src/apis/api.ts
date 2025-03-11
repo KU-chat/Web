@@ -1,29 +1,27 @@
 import axios from 'axios'
-import { refreshAccessToken, getAccessTokenFromCookie } from './auth'
+import { refreshAccessToken } from './auth'
 
 const api = axios.create({
   baseURL: 'https://www.kuchat.site',
+  withCredentials: true,
 })
 
-// ✅ 요청 인터셉터 (쿠키에서 `access_token` 가져와 `Authorization` 헤더 설정)
-api.interceptors.request.use(async (config) => {
-  try {
-    // ✅ `access_token`을 쿠키에서 가져옴
-    const accessToken = getAccessTokenFromCookie()
+api.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    const originalRequest = error.config
 
-    if (!accessToken) {
-      console.warn('access_token이 쿠키에서 발견되지 않았습니다.')
-    } else {
-      config.headers.Authorization = `Bearer ${accessToken}`
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true
+      const refreshed = await refreshAccessToken()
+
+      if (refreshed) {
+        return api(originalRequest)
+      }
     }
 
-    // ✅ 토큰이 만료되었을 경우 자동 갱신 (쿠키에서 새로운 토큰을 가져옴)
-    await refreshAccessToken()
-  } catch (error) {
-    console.error('토큰 갱신 실패:', error)
-  }
-
-  return config
-})
+    return Promise.reject(error)
+  },
+)
 
 export default api
