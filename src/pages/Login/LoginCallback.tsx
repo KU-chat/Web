@@ -22,14 +22,14 @@ const LoginCallback = () => {
           { code },
           { withCredentials: true },
         )
-        const { guestToken } = response.data.guestToken
-        console.log(response.data.guestToken, 'dsdsds')
+        const guestToken = response.data.guestToken
+        console.log(guestToken)
         localStorage.setItem('guestToken', guestToken)
 
         if (guestToken) {
           console.log('게스트 유저입니다. 회원가입 페이지로 이동')
           localStorage.setItem('guestToken', guestToken)
-          navigate('/signup', { state: { guestToken } })
+          navigate('/signup')
         } else {
           console.log('로그인 성공, 홈으로 이동')
           navigate('/')
