@@ -22,7 +22,8 @@ const LoginCallback = () => {
           { code },
           { withCredentials: true },
         )
-        const { guestToken } = response.data
+        const { guestToken } = response.data.guestToken
+        console.log(response.data, 'dsdsds')
         localStorage.setItem('guestToken', guestToken)
 
         if (guestToken) {
