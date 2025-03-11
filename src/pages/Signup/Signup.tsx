@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Language from '../../components/Signup/Language'
 import { Col } from '../../components/commons/Flex'
 import Country from '../../components/Signup/Country'
