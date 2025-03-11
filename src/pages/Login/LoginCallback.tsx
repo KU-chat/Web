@@ -32,7 +32,7 @@ const LoginCallback = () => {
           navigate('/signup')
         } else {
           console.log('로그인 성공, 홈으로 이동')
-          navigate('/')
+          navigate('/profile')
         }
       } catch (error) {
         console.error('구글 로그인 실패:', error)
