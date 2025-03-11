@@ -20,7 +20,6 @@ const Router = () => {
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
         <Route path='/login/callback' element={<LoginCallback />} />
-
         <Route path='/chat' element={<Chat />} />
         <Route path='/friend' element={<Friend />} />
         <Route path='/profile' element={<Profile />} />

@@ -22,9 +22,14 @@ const LoginCallback = () => {
           { code },
           { withCredentials: true },
         )
-
-        console.log('로그인 성공:', response.data)
-        navigate('/')
+        const { guestToken } = response.data
+        if (guestToken) {
+          console.log('게스트 유저입니다. 회원가입 페이지로 이동')
+          navigate('/signup', { state: { guestToken } })
+        } else {
+          console.log('로그인 성공, 홈으로 이동')
+          navigate('/')
+        }
       } catch (error) {
         console.error('구글 로그인 실패:', error)
         navigate('/login')
