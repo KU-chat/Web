@@ -11,7 +11,7 @@ const Complete = ({ signupData }: { signupData: any }) => {
     try {
       await signup(signupData)
 
-      navigate('/')
+      navigate('/profile')
     } catch (error: any) {
       alert(error.message)
     }
