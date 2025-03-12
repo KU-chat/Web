@@ -42,7 +42,6 @@ const Signup = () => {
     setSignupData({ ...signupData, [field]: value })
   }
 
-  console.log(signupData)
   return (
     <Col>
       {step === 1 && (
